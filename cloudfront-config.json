@@ -1,0 +1,53 @@
+{
+    "CallerReference": "radishimmersive-2025",
+    "Comment": "Radish Immersive Website Distribution",
+    "DefaultCacheBehavior": {
+        "TargetOriginId": "S3-radishimmersive.com",
+        "ViewerProtocolPolicy": "redirect-to-https",
+        "AllowedMethods": {
+            "Quantity": 7,
+            "Items": ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+        },
+        "ForwardedValues": {
+            "QueryString": false,
+            "Cookies": {
+                "Forward": "none"
+            }
+        },
+        "MinTTL": 0,
+        "DefaultTTL": 0,
+        "MaxTTL": 0
+    },
+    "Origins": {
+        "Quantity": 1,
+        "Items": [
+            {
+                "Id": "S3-radishimmersive.com",
+                "DomainName": "radishimmersive.com.s3-website-us-east-1.amazonaws.com",
+                "CustomOriginConfig": {
+                    "HTTPPort": 80,
+                    "HTTPSPort": 443,
+                    "OriginProtocolPolicy": "http-only"
+                }
+            }
+        ]
+    },
+    "Enabled": true,
+    "Aliases": {
+        "Quantity": 2,
+        "Items": ["radishimmersive.com", "www.radishimmersive.com"]
+    },
+    "DefaultRootObject": "index.html",
+    "CustomErrorResponses": {
+        "Quantity": 1,
+        "Items": [
+            {
+                "ErrorCode": 404,
+                "ResponsePagePath": "/index.html",
+                "ResponseCode": "200",
+                "ErrorCachingMinTTL": 0
+            }
+        ]
+    },
+    "PriceClass": "PriceClass_100"
+}

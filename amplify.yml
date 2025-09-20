@@ -1,0 +1,21 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - echo "Installing dependencies..."
+        - npm install -g @aws-amplify/cli
+    build:
+      commands:
+        - echo "Building the website..."
+        - echo "No build step needed for static site"
+    postBuild:
+      commands:
+        - echo "Build completed"
+  artifacts:
+    baseDirectory: .
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*

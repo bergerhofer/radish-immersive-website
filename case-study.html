@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Installation Case Study - Radish Studio</title>
+    <link rel="icon" type="image/png" href="floating-radish-favicon.png">
+    <link rel="shortcut icon" type="image/png" href="floating-radish-favicon.png">
+    <link rel="apple-touch-icon" href="floating-radish-favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .case-study-hero {
+            background: linear-gradient(135deg, var(--radish-black) 0%, #34495e 100%);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .case-study-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23e74c3c" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .case-study-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--radish-white);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--radish-red);
+        }
+        
+        .back-arrow {
+            margin-right: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-link:hover .back-arrow {
+            transform: translateX(-5px);
+        }
+        
+        .case-study-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--radish-white);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        
+        .case-study-subtitle {
+            font-size: 1.3rem;
+            color: #bdc3c7;
+            margin-bottom: 2rem;
+        }
+        
+        .case-study-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-label {
+            font-size: 0.9rem;
+            color: #95a5a6;
+            margin-bottom: 0.3rem;
+        }
+        
+        .meta-value {
+            font-size: 1.1rem;
+            color: var(--radish-white);
+            font-weight: 600;
+        }
+        
+        .case-study-body {
+            padding: 80px 0;
+        }
+        
+        .case-study-section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--radish-black);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--radish-red);
+        }
+        
+        .section-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--radish-dark-gray);
+        }
+        
+        .section-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--radish-red), var(--radish-green));
+            color: var(--radish-white);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+        }
+        
+        .highlight-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .highlight-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .tech-item {
+            background: var(--radish-light-gray);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid var(--radish-red);
+        }
+        
+        .tech-name {
+            font-weight: 600;
+            color: var(--radish-black);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-description {
+            font-size: 0.9rem;
+            color: var(--radish-dark-gray);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            background: linear-gradient(45deg, var(--radish-red), var(--radish-green));
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .gallery-item::after {
+            content: '📱';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .result-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--radish-light-gray);
+            border-radius: 15px;
+            border-top: 4px solid var(--radish-green);
+        }
+        
+        .result-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--radish-red);
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-label {
+            font-size: 1.1rem;
+            color: var(--radish-black);
+            font-weight: 600;
+        }
+        
+        .cta-section {
+            background: var(--radish-black);
+            color: var(--radish-white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.2rem;
+            color: #bdc3c7;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .case-study-title {
+                font-size: 2.5rem;
+            }
+            
+            .case-study-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .tech-stack {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>RADISH</h2>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About Us</a></li>
+                <li><a href="index.html#work" class="nav-link">Our Work</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Case Study Hero -->
+    <section class="case-study-hero">
+        <div class="container">
+            <div class="case-study-content">
+                <a href="index.html#work" class="back-link">
+                    <span class="back-arrow">←</span>
+                    Back to Our Work
+                </a>
+                
+                <h1 class="case-study-title">Digital Installation</h1>
+                <p class="case-study-subtitle">
+                    An interactive art installation that merges physical and digital experiences, 
+                    creating an immersive journey through light, sound, and motion.
+                </p>
+                
+                <div class="case-study-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Client</span>
+                        <span class="meta-value">Museum of Modern Art</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Duration</span>
+                        <span class="meta-value">6 months</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Team Size</span>
+                        <span class="meta-value">8 people</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Category</span>
+                        <span class="meta-value">Interactive Art</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Body -->
+    <section class="case-study-body">
+        <div class="container">
+            <!-- Challenge Section -->
+            <div class="case-study-section">
+                <h2 class="section-title">The Challenge</h2>
+                <div class="section-content">
+                    <p>
+                        The Museum of Modern Art approached us with a unique challenge: create an 
+                        interactive installation that would bridge the gap between traditional art 
+                        and digital technology. The installation needed to be accessible to visitors 
+                        of all ages while providing a deeply engaging and educational experience.
+                    </p>
+                    <p>
+                        The space was a 500-square-foot gallery with high ceilings and natural light, 
+                        requiring us to design a solution that would work harmoniously with the 
+                        existing architecture while creating a completely new sensory experience.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Solution Section -->
+            <div class="case-study-section">
+                <h2 class="section-title">Our Solution</h2>
+                <div class="section-content">
+                    <p>
+                        We developed "Echoes of Light," an interactive installation that responds to 
+                        visitor movement and creates a dynamic visual and auditory experience. The 
+                        installation consists of multiple sensor arrays, projection mapping, and 
+                        spatial audio systems that work together to create an ever-changing environment.
+                    </p>
+                    
+                    <div class="highlight-box">
+                        <div class="highlight-content">
+                            <h3 class="highlight-title">Key Innovation</h3>
+                            <p>
+                                Our breakthrough was developing a proprietary motion tracking system 
+                                that could detect subtle movements and translate them into complex 
+                                visual patterns in real-time, creating a truly responsive and 
+                                personalized experience for each visitor.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <p>
+                        The installation features 12 high-resolution projectors that create a 
+                        360-degree immersive environment, while 24 speakers provide spatial audio 
+                        that follows visitors as they move through the space. The entire system 
+                        is controlled by custom software that processes data from 48 motion sensors 
+                        in real-time.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Technology Stack -->
+            <div class="case-study-section">
+                <h2 class="section-title">Technology Stack</h2>
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <div class="tech-name">Motion Tracking</div>
+                        <div class="tech-description">Custom computer vision algorithms</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-name">Projection Mapping</div>
+                        <div class="tech-description">TouchDesigner & MadMapper</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-name">Spatial Audio</div>
+                        <div class="tech-description">Max/MSP & Ambisonics</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-name">Hardware</div>
+                        <div class="tech-description">Raspberry Pi clusters</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-name">Sensors</div>
+                        <div class="tech-description">LiDAR & depth cameras</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-name">Rendering</div>
+                        <div class="tech-description">OpenFrameworks & C++</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Process Section -->
+            <div class="case-study-section">
+                <h2 class="section-title">The Process</h2>
+                <div class="section-content">
+                    <p>
+                        Our development process began with extensive research into visitor behavior 
+                        patterns and museum engagement strategies. We conducted user interviews 
+                        and created multiple prototypes to test different interaction models.
+                    </p>
+                    <p>
+                        The technical development involved creating custom motion tracking algorithms, 
+                        developing the projection mapping system, and building the spatial audio 
+                        engine. We worked closely with museum staff to ensure the installation 
+                        would integrate seamlessly with their existing systems and visitor flow.
+                    </p>
+                    <p>
+                        Testing and iteration were crucial throughout the process. We conducted 
+                        multiple user testing sessions with different age groups to refine the 
+                        interaction design and ensure accessibility for all visitors.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Gallery -->
+            <div class="case-study-section">
+                <h2 class="section-title">Project Gallery</h2>
+                <div class="gallery">
+                    <div class="gallery-item"></div>
+                    <div class="gallery-item"></div>
+                    <div class="gallery-item"></div>
+                    <div class="gallery-item"></div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="case-study-section">
+                <h2 class="section-title">Results</h2>
+                <div class="section-content">
+                    <p>
+                        The "Echoes of Light" installation has been a tremendous success, attracting 
+                        visitors from around the world and receiving critical acclaim from both 
+                        art critics and technology enthusiasts. The installation has been featured 
+                        in major art publications and has inspired similar projects at other 
+                        institutions.
+                    </p>
+                    
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="result-number">150%</div>
+                            <div class="result-label">Increase in Gallery Time</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-number">95%</div>
+                            <div class="result-label">Visitor Satisfaction</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-number">50K+</div>
+                            <div class="result-label">Monthly Visitors</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-number">12</div>
+                            <div class="result-label">Awards Won</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impact Section -->
+            <div class="case-study-section">
+                <h2 class="section-title">Impact & Legacy</h2>
+                <div class="section-content">
+                    <p>
+                        Beyond the immediate success of the installation, "Echoes of Light" has 
+                        established new standards for interactive art experiences in museum settings. 
+                        The project has been documented in academic papers and has influenced 
+                        the development of similar installations worldwide.
+                    </p>
+                    <p>
+                        The museum has reported that the installation has attracted a younger, 
+                        more diverse audience and has increased overall visitor engagement with 
+                        the museum's digital art collection. The success of this project has 
+                        led to ongoing partnerships and new opportunities for innovative 
+                        installations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Ready to Create Something Amazing?</h2>
+            <p class="cta-subtitle">
+                Let's discuss your next immersive project and bring your vision to life.
+            </p>
+            <div class="cta-buttons">
+                <a href="index.html#contact" class="btn btn-primary">Start Your Project</a>
+                <a href="index.html#work" class="btn btn-secondary">View More Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>RADISH</h3>
+                    <p>Immersive Creative</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#home">Home</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#work">Work</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Radish Immersive. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

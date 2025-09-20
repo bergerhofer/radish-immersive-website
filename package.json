@@ -1,0 +1,23 @@
+{
+  "name": "radish-immersive-website",
+  "version": "1.0.0",
+  "description": "Radish Immersive Creative Studio Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "build": "echo 'No build step needed for static site'",
+    "deploy": "echo 'Deploy via AWS Amplify'"
+  },
+  "keywords": [
+    "website",
+    "creative",
+    "studio",
+    "immersive",
+    "design"
+  ],
+  "author": "Radish Immersive",
+  "license": "MIT",
+  "devDependencies": {
+    "@aws-amplify/cli": "^12.0.0"
+  }
+}
