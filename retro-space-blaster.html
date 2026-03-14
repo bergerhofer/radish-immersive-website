@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Space Blaster - Project Whitepaper - Radish Studio</title>
+    <link rel="icon" type="image/png" href="floating-radish-favicon.png">
+    <link rel="shortcut icon" type="image/png" href="floating-radish-favicon.png">
+    <link rel="apple-touch-icon" href="floating-radish-favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .whitepaper-hero {
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 50%, #2d1b4e 100%);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .whitepaper-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="10" cy="20" r="0.5" fill="white" opacity="0.4"/><circle cx="50" cy="5" r="0.5" fill="white" opacity="0.6"/><circle cx="80" cy="40" r="0.5" fill="white" opacity="0.3"/><circle cx="25" cy="60" r="0.5" fill="white" opacity="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+            opacity: 0.5;
+        }
+        
+        .whitepaper-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: #bdc3c7;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--radish-red);
+        }
+        
+        .back-arrow {
+            margin-right: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-link:hover .back-arrow {
+            transform: translateX(-5px);
+        }
+        
+        .whitepaper-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--radish-white);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .whitepaper-subtitle {
+            font-size: 1.3rem;
+            color: #bdc3c7;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .whitepaper-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-label {
+            font-size: 0.9rem;
+            color: #95a5a6;
+            margin-bottom: 0.3rem;
+        }
+        
+        .meta-value {
+            font-size: 1.1rem;
+            color: var(--radish-white);
+            font-weight: 600;
+        }
+        
+        .whitepaper-body {
+            padding: 80px 0;
+            background: var(--radish-white);
+        }
+        
+        .whitepaper-section {
+            margin-bottom: 4rem;
+        }
+        
+        .whitepaper-section .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--radish-black);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .whitepaper-section .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--radish-red);
+        }
+        
+        .section-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--radish-dark-gray);
+        }
+        
+        .section-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #1a1a3e, #2d1b4e);
+            color: var(--radish-white);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(251, 78, 64, 0.3);
+        }
+        
+        .highlight-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .highlight-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--radish-red);
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .tech-item {
+            background: var(--radish-light-gray);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid var(--radish-red);
+        }
+        
+        .tech-name {
+            font-weight: 600;
+            color: var(--radish-black);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-description {
+            font-size: 0.9rem;
+            color: var(--radish-dark-gray);
+        }
+        
+        .blaster-preview {
+            text-align: center;
+            margin: 2.5rem 0;
+        }
+        
+        .blaster-preview img {
+            max-width: 50%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
+        .inspiration-video {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .inspiration-video video {
+            max-width: 100%;
+            width: 560px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
+        .inspiration-video .video-caption {
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+            color: var(--radish-dark-gray);
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .whitepaper-title {
+                font-size: 2.5rem;
+            }
+            
+            .whitepaper-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .tech-stack {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>RADISH</h2>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About Us</a></li>
+                <li><a href="insights.html" class="nav-link">Insights</a></li>
+                <li><a href="index.html#work" class="nav-link">Our Work</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Whitepaper Hero -->
+    <section class="whitepaper-hero">
+        <div class="container">
+            <div class="whitepaper-content">
+                <a href="sandbox.html" class="back-link">
+                    <span class="back-arrow">←</span>
+                    Back to Sandbox
+                </a>
+                
+                <h1 class="whitepaper-title">Retro Space Blaster</h1>
+                <p class="whitepaper-subtitle">
+                    A retro sci-fi blaster created with AI and brought into VR—inspired by vintage metal toy guns from the Toy and Miniature Museum.
+                </p>
+                
+                <div class="whitepaper-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Type</span>
+                        <span class="meta-value">XR / VR Sandbox</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Inspiration</span>
+                        <span class="meta-value">Retro metal blaster guns</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Capture</span>
+                        <span class="meta-value">Meta Quest 3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Whitepaper Body -->
+    <section class="whitepaper-body">
+        <div class="container">
+            <div class="whitepaper-section">
+                <h2 class="section-title">Overview</h2>
+                <div class="section-content">
+                    <p>
+                        <strong>Retro Space Blaster</strong> started with a visit to the <strong>Toy and Miniature Museum</strong>, where I got inspired by retro metal blaster guns. I wanted to bring that look and feel into VR—so I created this blaster using AI and a short pipeline from image to 3D to headset.
+                    </p>
+                    <div class="inspiration-video">
+                        <video src="Sandbox-resources/Blaster/Blaster1.mp4" controls playsinline preload="metadata" aria-label="Retro metal blaster guns at the Toy and Miniature Museum"></video>
+                        <p class="video-caption">Inspiration: retro metal blaster guns at the Toy and Miniature Museum</p>
+                    </div>
+                    <p>
+                        The result is a sci-fi blaster you can hold and use in VR: the design was generated as an image, turned into a 3D model with textures, then loaded into Quest and attached to the controller. The video on this page was captured through my <strong>Meta Quest 3</strong>.
+                    </p>
+                    <div class="blaster-preview">
+                        <img src="Sandbox-resources/Blaster/blaster-mine.gif" alt="Retro Space Blaster in VR, captured on Meta Quest 3">
+                    </div>
+                </div>
+            </div>
+
+            <div class="whitepaper-section">
+                <h2 class="section-title">How It Was Made</h2>
+                <div class="section-content">
+                    <p>
+                        The pipeline is straightforward and repeatable:
+                    </p>
+                    
+                    <div class="highlight-box">
+                        <div class="highlight-content">
+                            <h3 class="highlight-title">Pipeline</h3>
+                            <p>
+                                <strong>1. Midjourney</strong> — Generate the image of the blaster.<br>
+                                <strong>2. Meshy</strong> — Create the 3D model and texture from the image.<br>
+                                <strong>3. Quest Building Blocks</strong> — Load the device and attach it to the controller (remote).<br>
+                                <strong>4. Meta Quest 3</strong> — Capture the video in-headset.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <p>
+                        So: concept and inspiration from the museum, visual design from AI image generation, geometry and surfacing from Meshy, and integration and capture in VR on the Quest. The blaster you see in the GIF is the same asset—held in hand and recorded directly from the headset.
+                    </p>
+                </div>
+            </div>
+
+            <div class="whitepaper-section">
+                <h2 class="section-title">Tech Stack</h2>
+                <div class="section-content">
+                    <p>
+                        Each step uses a focused tool: Midjourney for the 2D concept, Meshy for image-to-3D and texturing, and Meta’s Quest Building Blocks to bring the model into VR and attach it to the controller. Video is captured natively on the <strong>Meta Quest 3</strong>.
+                    </p>
+                    
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <div class="tech-name">Image</div>
+                            <div class="tech-description">Midjourney</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-name">Model & texture</div>
+                            <div class="tech-description">Meshy</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-name">VR build</div>
+                            <div class="tech-description">Quest Building Blocks</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-name">Capture</div>
+                            <div class="tech-description">Meta Quest 3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="whitepaper-section">
+                <h2 class="section-title">Status</h2>
+                <div class="section-content">
+                    <p>
+                        This is a Sandbox experiment: one blaster, one pipeline, from museum inspiration to in-headset video. More variations and playable setups may follow. For updates, check the Sandbox and the Retro Space Blaster link.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>RADISH</h3>
+                    <p>Immersive Creative</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#home">Home</a>
+                    <a href="index.html#about">About</a>
+                    <a href="insights.html">Insights</a>
+                    <a href="index.html#work">Work</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Radish Immersive. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Runner - Project - Radish Studio</title>
+    <link rel="icon" type="image/png" href="floating-radish-favicon.png">
+    <link rel="shortcut icon" type="image/png" href="floating-radish-favicon.png">
+    <link rel="apple-touch-icon" href="floating-radish-favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .project-hero {
+            background: linear-gradient(135deg, #0d2818 0%, #1a3d2e 40%, #2d5a4a 100%);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M 12 0 L 0 0 0 12" fill="none" stroke="%2385c88a" stroke-width="0.4" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.6;
+        }
+        
+        .project-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: #bdc3c7;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--radish-red);
+        }
+        
+        .back-arrow {
+            margin-right: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-link:hover .back-arrow {
+            transform: translateX(-5px);
+        }
+        
+        .project-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--radish-white);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .project-subtitle {
+            font-size: 1.3rem;
+            color: #bdc3c7;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-label {
+            font-size: 0.9rem;
+            color: #95a5a6;
+            margin-bottom: 0.3rem;
+        }
+        
+        .meta-value {
+            font-size: 1.1rem;
+            color: var(--radish-white);
+            font-weight: 600;
+        }
+        
+        .project-body {
+            padding: 80px 0;
+            background: var(--radish-white);
+        }
+        
+        .project-section {
+            margin-bottom: 4rem;
+        }
+        
+        .project-section .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--radish-black);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .project-section .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--radish-red);
+        }
+        
+        .section-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--radish-dark-gray);
+        }
+        
+        .section-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #1a3d2e, #2d5a4a);
+            color: var(--radish-white);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(251, 78, 64, 0.3);
+        }
+        
+        .highlight-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .highlight-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--radish-red);
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .tech-item {
+            background: var(--radish-light-gray);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid var(--radish-red);
+        }
+        
+        .tech-name {
+            font-weight: 600;
+            color: var(--radish-black);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-description {
+            font-size: 0.9rem;
+            color: var(--radish-dark-gray);
+        }
+        
+        .project-preview {
+            text-align: center;
+            margin: 2.5rem 0;
+        }
+        
+        .project-preview img {
+            max-width: 100%;
+            width: 560px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2.5rem;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .tech-stack {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-preview img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>RADISH</h2>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About Us</a></li>
+                <li><a href="insights.html" class="nav-link">Insights</a></li>
+                <li><a href="index.html#work" class="nav-link">Our Work</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="project-hero-content">
+                <a href="sandbox.html" class="back-link">
+                    <span class="back-arrow">←</span>
+                    Back to Sandbox
+                </a>
+                
+                <h1 class="project-title">Roblox Runner</h1>
+                <p class="project-subtitle">
+                    Control your Roblox character by moving your arms. Media Pipe tracks your pose and sends movement and turning to Roblox in real time.
+                </p>
+                
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Type</span>
+                        <span class="meta-value">Playable Story</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Tech</span>
+                        <span class="meta-value">Media Pipe + Roblox</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Body -->
+    <section class="project-body">
+        <div class="container">
+            <div class="project-section">
+                <h2 class="section-title">Overview</h2>
+                <div class="section-content">
+                    <p>
+                        <strong>Roblox Runner</strong> is a Sandbox experiment that connects your real-world arm movements to your Roblox character. Using <strong>Media Pipe</strong> to track your arms, the system drives movement in Roblox: when you swing your arms, your player runs; when you hold up one hand, the character turns 90 degrees in that direction.
+                    </p>
+                    <div class="project-preview">
+                        <img src="Sandbox-resources/Roblox-runner/roblox-runner-1.gif" alt="Roblox Runner: arm movements controlling character in Roblox">
+                    </div>
+                    <p>
+                        The result is a physical, full-body style of control—no keyboard or gamepad required. You run by pumping your arms and steer by raising a hand to turn left or right, so the experience feels closer to actually running and turning in space.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-section">
+                <h2 class="section-title">How It Works</h2>
+                <div class="section-content">
+                    <p>
+                        A webcam (or camera feed) runs through Media Pipe, which detects your pose and arm positions. That data is mapped to two actions in Roblox:
+                    </p>
+                    
+                    <div class="highlight-box">
+                        <div class="highlight-content">
+                            <h3 class="highlight-title">Controls</h3>
+                            <p>
+                                <strong>Swing your arms</strong> — Your character runs. The motion of your arms is used to trigger and sustain forward movement.<br><br>
+                                <strong>Hold up one hand</strong> — Your character turns 90 degrees in that direction. Raise your left hand to turn left, right hand to turn right.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <p>
+                        The bridge between Media Pipe and Roblox sends these signals in real time, so your on-screen character responds to your movements with minimal delay. Calibration and sensitivity can be tuned so it works in your play space and camera setup.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-section">
+                <h2 class="section-title">Tech Stack</h2>
+                <div class="section-content">
+                    <p>
+                        The pipeline is: camera input → Media Pipe (pose/arm tracking) → a small bridge layer that converts gestures into run/turn commands → Roblox, where the player character is controlled.
+                    </p>
+                    
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <div class="tech-name">Pose & arms</div>
+                            <div class="tech-description">Media Pipe</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-name">Game</div>
+                            <div class="tech-description">Roblox</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-name">Bridge</div>
+                            <div class="tech-description">Custom (Media Pipe → Roblox)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>RADISH</h3>
+                    <p>Immersive Creative</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#home">Home</a>
+                    <a href="index.html#about">About</a>
+                    <a href="insights.html">Insights</a>
+                    <a href="index.html#work">Work</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Radish Immersive. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
