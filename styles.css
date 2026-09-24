@@ -1167,3 +1167,5 @@ a.nav-logo { text-decoration: none; }
 .card-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 @media (min-width: 1000px) { .services .card.featured { grid-column: span 2; } }
 .facts a { color: var(--radish-red); text-decoration: none; }
+.page-body .progression { font-size: 1.6rem; font-weight: 800; letter-spacing: 2px; color: var(--radish-red); text-align: center; margin: 2rem 0; }
+.page-body .pull-question { border-left: 4px solid var(--radish-red); padding: 0.5rem 0 0.5rem 1.25rem; margin: 1.5rem 0; font-size: 1.3rem; font-weight: 600; color: var(--radish-black); line-height: 1.5; }
