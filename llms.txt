@@ -24,7 +24,3 @@ Attractions, museums and cultural venues; hospitality, food and beverage; events
 - Email: hello@radishimmersive.com
 - Form: https://radishimmersive.com/#contact
 - Location: Kansas City area
-
-## Related companies
-- Redfive: redesigns work around people and intelligent technology
-- Stingray Sensing: reveals how places, assets and people behave over time, using drones, cameras, sensors and spatial data
