@@ -1,0 +1,30 @@
+# Radish Immersive
+
+> Radish Immersive is an experience design studio based in the Kansas City area, led by Tim Bergerhofer. It helps organizations create physical and digital experiences that change what people feel, do, discover, remember and share. Tagline: "Make something people choose to be part of."
+
+Method: Observe → Interpret → Make → Test. Radish studies the real experience, forms a point of view, makes something (an experience, service, environment, story, digital product or emerging-technology prototype), tests it with real people, and measures what changed.
+
+## Services
+- Experience Research: observation and interviews with visitors, customers, employees and leadership
+- Experience Strategy & Concepts: prioritized opportunities, concepts and a test plan
+- Prototypes & Experiences: installations, environments, events, services, stories, digital products
+- Pilots & Measurement: live tests, measurement and an expand/change/stop recommendation
+- Agent Accessibility Audit: a 100-point audit of how well AI assistants can find, understand and act on a website ([details](https://radishimmersive.com/audit.html))
+
+## Who Radish works with
+Attractions, museums and cultural venues; hospitality, food and beverage; events and entertainment; retail and brand spaces; workplaces and internal programs.
+
+## Key pages
+- [Home: approach, process, services, about, FAQ](https://radishimmersive.com/)
+- [Agent Accessibility Audit](https://radishimmersive.com/audit.html)
+- [Insights](https://radishimmersive.com/insights.html)
+- [Privacy policy](https://radishimmersive.com/privacy.html)
+
+## Contact
+- Email: hello@radishimmersive.com
+- Form: https://radishimmersive.com/#contact
+- Location: Kansas City area
+
+## Related companies
+- Redfive: redesigns work around people and intelligent technology
+- Stingray Sensing: reveals how places, assets and people behave over time, using drones, cameras, sensors and spatial data
